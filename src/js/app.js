@@ -166,7 +166,7 @@ $(document).ready(function() {
               var multihash = _hashFunction + _size + _digest;
               multihash = new Uint8Array(multihash.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
               var _ipfsHash = to_b58(multihash,MAP);
-              $('.list-group').prepend(`<div><a href="https://ipfs.io/ipfs/${_ipfsHash}" target="_blank">${_name}</a></div>`);
+              $('.list-group').prepend(`<div id="tiles"><a href="https://ipfs.io/ipfs/${_ipfsHash}" target="_blank">${_name}</a></div>`);
             });
         }
       });
@@ -216,15 +216,22 @@ $(document).ready(function() {
       ipfsHash = result[0].hash; // base58 encoded multihash
       ipfsHash = ipfsHash.toString();
       $(".ipfsLink").html(`Your IPFS Link : https://ipfs.io/ipfs/${ipfsHash}`);
-      $('.list-group').append(`<div><a href="https://ipfs.io/ipfs/${ipfsHash}" target="_blank">${fileName}</a></div>`);
       var decoded = toHexString(from_b58(ipfsHash,MAP)).toUpperCase();
       var digest= `0x${decoded.slice(4)}`;
       var hashFunction = parseInt(decoded[0]+decoded[1]);
       var size= parseInt(decoded[2]+decoded[3]);
-      fileName = web3.fromAscii(fileName); // converting from string to hex to send in smart contract
+      var fileName1 = web3.fromAscii(fileName); // converting from string to hex to send in smart contract
       storageInstance
-        .addFile(digest, hashFunction, size, fileName,{ from: account })
+        .addFile(digest, hashFunction, size, fileName1,{ from: account })
         .then(() => {
+          $('.list-group').prepend(`<div id="tiles"><a href="https://ipfs.io/ipfs/${ipfsHash}" target="_blank">${fileName}</a></div>`);
+          $(".pub").show();
+          $("#loading").hide();
+          $('#name').val("");
+          $(".rt").show();
+          $("#fileN").html("");
+        })
+        .catch(err => {
           $(".pub").show();
           $("#loading").hide();
           $('#name').val("");

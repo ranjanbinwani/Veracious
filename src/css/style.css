@@ -164,6 +164,15 @@ body {
   display: block;
   margin-top: 10px;
 }
+#tiles{
+  width: 80%;
+  margin: 15px auto;
+  background-color: rgb(0,0,0,0.4);
+  border-radius: 20px;
+  box-shadow: 0 8px 6px -6px black;
+  border:none;
+  padding: 10px;
+}
 .home,.upload {
   height: 100%;
   color: white;
