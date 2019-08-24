@@ -165,7 +165,7 @@ $(document).ready(function() {
               var multihash = _hashFunction + _size + _digest;
               multihash = new Uint8Array(multihash.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
               var _ipfsHash = to_b58(multihash,MAP);
-              $('.list-group').append(`<li>https://ipfs.io/ipfs/${_ipfsHash}</li>`);
+              $('.list-group').append(`<a href="https://ipfs.io/ipfs/${_ipfsHash}" target=_blank>https://ipfs.io/ipfs/${_ipfsHash}</a><br />`);
             });
         }
       });
@@ -214,7 +214,7 @@ $(document).ready(function() {
       ipfsHash = result[0].hash; // base58 encoded multihash
       ipfsHash = ipfsHash.toString();
       $(".ipfsLink").html(`Your IPFS Link : https://ipfs.io/ipfs/${ipfsHash}`);
-      $('.list-group').append(`<li>https://ipfs.io/ipfs/${ipfsHash}</li>`);
+      $('.list-group').append(`<a href="https://ipfs.io/ipfs/${ipfsHash}" target=_blank>https://ipfs.io/ipfs/${ipfsHash}</a>`);
       var decoded = toHexString(from_b58(ipfsHash,MAP)).toUpperCase();
       var digest= `0x${decoded.slice(4)}`;
       var hashFunction = parseInt(decoded[0]+decoded[1]);
