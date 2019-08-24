@@ -147,17 +147,21 @@ $(document).ready(function() {
     // web3Provider = new Web3.providers.HttpProvider("http://127.0.0.1:7545");
     // web3 = new Web3(web3Provider);
   }
+
   $.getJSON("Storage.json", function(storage) {
     contracts.Storage = TruffleContract(storage);
     contracts.Storage.setProvider(web3Provider);
     contracts.Storage.deployed().then(function(instance) {
       storageInstance = instance;
+      // console.log(storageInstance);
       storageInstance
       .getCount.call({ from: account })
       .then(c => {
+        // console.log(c);
         for(let i=1;i<c;i++){
           storageInstance.getEntry.call(i, { from: account })
             .then(ipfsH => {
+              // console.log(ipfsH);
               var [_digest, _hashFunction, _size] = ipfsH;
               _hashFunction = _hashFunction.toNumber().toString();
               _size = _size.toNumber().toString();
@@ -165,7 +169,7 @@ $(document).ready(function() {
               var multihash = _hashFunction + _size + _digest;
               multihash = new Uint8Array(multihash.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
               var _ipfsHash = to_b58(multihash,MAP);
-              $('.list-group').append(`<li>https://ipfs.io/ipfs/${_ipfsHash}</li>`);
+              $('.list-group').append(`<a href="https://ipfs.io/ipfs/${_ipfsHash}">https://ipfs.io/ipfs/${_ipfsHash}</a>`);
             });
         }
       });
@@ -214,7 +218,7 @@ $(document).ready(function() {
       ipfsHash = result[0].hash; // base58 encoded multihash
       ipfsHash = ipfsHash.toString();
       $(".ipfsLink").html(`Your IPFS Link : https://ipfs.io/ipfs/${ipfsHash}`);
-      $('.list-group').append(`<li>https://ipfs.io/ipfs/${ipfsHash}</li>`);
+      $('.list-group').append(`<a href="https://ipfs.io/ipfs/${ipfsHash}">https://ipfs.io/ipfs/${ipfsHash}</a>`);
       var decoded = toHexString(from_b58(ipfsHash,MAP)).toUpperCase();
       var digest= `0x${decoded.slice(4)}`;
       var hashFunction = parseInt(decoded[0]+decoded[1]);
