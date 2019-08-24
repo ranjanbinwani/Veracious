@@ -158,14 +158,15 @@ $(document).ready(function() {
         for(let i=1;i<c;i++){
           storageInstance.getEntry.call(i, { from: account })
             .then(ipfsH => {
-              var [_digest, _hashFunction, _size] = ipfsH;
+              var [_digest, _hashFunction, _size, _name] = ipfsH;
               _hashFunction = _hashFunction.toNumber().toString();
               _size = _size.toNumber().toString();
               _digest = _digest.slice(2);
+              _name = web3.toAscii(_name);
               var multihash = _hashFunction + _size + _digest;
               multihash = new Uint8Array(multihash.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
               var _ipfsHash = to_b58(multihash,MAP);
-              $('.list-group').append(`<a href="https://ipfs.io/ipfs/${_ipfsHash}" target=_blank>https://ipfs.io/ipfs/${_ipfsHash}</a><br />`);
+              $('.list-group').prepend(`<div><a href="https://ipfs.io/ipfs/${_ipfsHash}" target="_blank">${_name}</a></div>`);
             });
         }
       });
@@ -211,19 +212,22 @@ $(document).ready(function() {
         console.log("Error is " + err);
         return;
       }
+      fileName = $('#name').val();
       ipfsHash = result[0].hash; // base58 encoded multihash
       ipfsHash = ipfsHash.toString();
       $(".ipfsLink").html(`Your IPFS Link : https://ipfs.io/ipfs/${ipfsHash}`);
-      $('.list-group').append(`<a href="https://ipfs.io/ipfs/${ipfsHash}" target=_blank>https://ipfs.io/ipfs/${ipfsHash}</a>`);
+      $('.list-group').append(`<div><a href="https://ipfs.io/ipfs/${ipfsHash}" target="_blank">${fileName}</a></div>`);
       var decoded = toHexString(from_b58(ipfsHash,MAP)).toUpperCase();
       var digest= `0x${decoded.slice(4)}`;
       var hashFunction = parseInt(decoded[0]+decoded[1]);
       var size= parseInt(decoded[2]+decoded[3]);
+      fileName = web3.fromAscii(fileName); // converting from string to hex to send in smart contract
       storageInstance
-        .addFile(digest, hashFunction, size,{ from: account })
+        .addFile(digest, hashFunction, size, fileName,{ from: account })
         .then(() => {
           $(".pub").show();
           $("#loading").hide();
+          $('#name').val("");
           $(".rt").show();
           $("#fileN").html("");
         });
