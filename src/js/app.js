@@ -223,10 +223,18 @@ $(document).ready(function() {
       var digest= `0x${decoded.slice(4)}`;
       var hashFunction = parseInt(decoded[0]+decoded[1]);
       var size= parseInt(decoded[2]+decoded[3]);
-      fileName = web3.fromAscii(fileName); // converting from string to hex to send in smart contract
+      var fileName1 = web3.fromAscii(fileName); // converting from string to hex to send in smart contract
       storageInstance
-        .addFile(digest, hashFunction, size, fileName,{ from: account })
+        .addFile(digest, hashFunction, size, fileName1,{ from: account })
         .then(() => {
+          $('.list-group').prepend(`<div id="tiles"><a href="https://ipfs.io/ipfs/${ipfsHash}" target="_blank">${fileName}</a></div>`);
+          $(".pub").show();
+          $("#loading").hide();
+          $('#name').val("");
+          $(".rt").show();
+          $("#fileN").html("");
+        })
+        .catch(err => {
           $(".pub").show();
           $("#loading").hide();
           $('#name').val("");
