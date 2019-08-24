@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400i&display=swap');
+
 html,
 body {
   height: 100%;
@@ -7,17 +8,21 @@ body {
   padding: 0;
   margin: 0;
 }
-.pub{
+
+.pub {
   border-radius: 50%;
   margin-bottom: 5px;
   cursor: pointer;
 }
+
 .clicked {
-	animation: boxShadowAnim 0.5s forwards;
+  animation: boxShadowAnim 0.5s forwards;
 }
+
 .name-div {
   margin-top: 20px;
 }
+
 #name {
   border: none;
   width: 400px;
@@ -30,95 +35,111 @@ body {
 }
 
 @keyframes boxShadowAnim {
-	from {
-		box-shadow: rgba(255, 224, 178, 1) 0px 0px 0px 0px;
-	}
-	to {
-		box-shadow: rgba(255, 224, 178, 0) 0px 0px 0px 20px;
-	}
+  from {
+    box-shadow: rgba(255, 224, 178, 1) 0px 0px 0px 0px;
+  }
+
+  to {
+    box-shadow: rgba(255, 224, 178, 0) 0px 0px 0px 20px;
+  }
 }
-.up{
+
+.up {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.upload{
+
+.upload {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.send{
+
+.send {
   position: relative;
-  margin-top:30px;
+  margin-top: 30px;
 }
-.upload-border{
+
+.upload-border {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height:400px;
-  width:400px;
-  background-color: rgb(0,0,0,0.35);
+  height: 400px;
+  width: 400px;
+  background-color: rgb(0, 0, 0, 0.35);
   outline: 2px dashed #92b0b3;
   outline-offset: -10px;
   transition: outline-offset 1s ease-in-out, outline-color 1s ease-in-out, background-color 1s ease-in-out;
 }
-.upload-zone{
+
+.upload-zone {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height:300px;
-  width:300px;
-  background-color: rgb(255,255,255,0.2);
+  height: 300px;
+  width: 300px;
+  background-color: rgb(255, 255, 255, 0.2);
   transition: width 1s ease-in-out, height 1s ease-in-out, background-color 1s ease-in-out;
 }
-.is-dragover{
-  height:350px;
-  width:350px;
-  background-color: rgb(255,255,255,0.6);
+
+.is-dragover {
+  height: 350px;
+  width: 350px;
+  background-color: rgb(255, 255, 255, 0.6);
 }
-.is-dragover2{
+
+.is-dragover2 {
   outline-offset: -15px;
   outline-color: white;
-  background-color: rgb(0,0,0,0.4);
+  background-color: rgb(0, 0, 0, 0.4);
 }
-.rt{
+
+.rt {
   position: relative;
-  color:black;
+  color: black;
 }
-.rt i{
-  opacity:0.6;
+
+.rt i {
+  opacity: 0.6;
 }
-.custom-input{
+
+.custom-input {
   display: inline-block;
   overflow: hidden;
   position: relative;
 }
-.custom-input input[type="file"]{
+
+.custom-input input[type="file"] {
   width: 100%;
   height: 100%;
   opacity: 0;
   filter: alpha(opacity=0);
-  zoom: 1;  /* Fix for IE7 */
+  zoom: 1;
+  /* Fix for IE7 */
   position: absolute;
   top: 0;
   left: 0;
 }
-.custom-input input[type="button"]{
+
+.custom-input input[type="button"] {
   border-radius: 50px;
-  border:none;
-  width:100px;
-  padding:5px;
-  color:black;
+  border: none;
+  width: 100px;
+  padding: 5px;
+  color: black;
   font-family: "Raleway", sans-serif;
   font-weight: bold;
   background-color: #078BFF;
 }
-.navbar{
+
+.navbar {
   background-color: transparent !important;
   transition: background-color 1s ease 0s;
 }
+
 .navbar.navbar-default {
   border: 0;
   -webkit-box-shadow: none;
@@ -130,70 +151,88 @@ body {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.navbar-brand{
-  color:white !important;
+
+.navbar-brand {
+  color: white !important;
   font-family: "Asimov", Arial, sans-serif;
   font-weight: 400;
 }
+
 .navbar.solid {
   background-color: #020202 !important;
   transition: background-color 1s ease 0s;
   box-shadow: 0 0 4px grey;
 }
-.navbar-nav>li>a{
-  color:white !important;
+
+.navbar-nav>li>a {
+  color: white !important;
   font-family: "Asimov", Arial, sans-serif;
 }
+
 .paralax {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.list-group{
+
+.list-group {
   text-align: center;
 }
-.list-group a:link,.list-group a:visited,.list-group a:hover,.list-group a:active{
+
+.list-group a:link,
+.list-group a:visited,
+.list-group a:hover,
+.list-group a:active {
   font-family: 'Fira Sans', sans-serif;
   text-decoration: none;
   color: white;
   user-select: pointer;
   font-size: 20px;
 }
-.list-group > * {
+
+.list-group>* {
   display: block;
   margin-top: 10px;
 }
-#tiles{
+
+#tiles {
   width: 80%;
   margin: 15px auto;
-  background-color: rgb(0,0,0,0.4);
+  background-color: rgb(0, 0, 0, 0.4);
   border-radius: 20px;
   box-shadow: 0 8px 6px -6px black;
-  border:none;
+  border: none;
   padding: 10px;
 }
-.home,.upload {
+
+.home,
+.upload {
   height: 100%;
   color: white;
   box-shadow: 0 0 15px grey;
   margin-bottom: 0;
   background-image: url("./../back-home.jpg");
-  box-shadow:inset 0 0 0 2000px rgba(0, 56, 139, 0.3);
+  box-shadow: inset 0 0 0 2000px rgba(0, 56, 139, 0.3);
 }
-.feeds{
+
+.feeds {
   background-image: url("./../feed.jpg");
 }
-.upload{
+
+.upload {
   background-image: url("https://res.cloudinary.com/crakerss/image/upload/c_scale,q_auto:good,w_1440/v1502969988/CDF.jpg");
 }
-#homeH1{
+
+#homeH1 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#homeH1 h1,h2 {
+
+#homeH1 h1,
+h2 {
   letter-spacing: 1px;
   font-family: "Raleway", sans-serif;
   font-weight: bold;
@@ -210,9 +249,11 @@ body {
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
 }
-#homeH1 h2{
-    animation-name: spreadText2;
+
+#homeH1 h2 {
+  animation-name: spreadText2;
 }
+
 #homeH1 i {
   animation-name: spreadIcons;
   animation-duration: 4s;
@@ -221,31 +262,37 @@ body {
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
 }
+
 @keyframes spreadText {
   from {
     letter-spacing: -20px;
     opacity: 0;
   }
+
   to {
     letter-spacing: 1px;
     opacity: 1;
   }
 }
+
 @keyframes spreadText2 {
-    from {
-      letter-spacing: -10px;
-      opacity: 0;
-    }
-    to {
-      letter-spacing: 1px;
-      opacity: 1;
-    }
+  from {
+    letter-spacing: -10px;
+    opacity: 0;
   }
+
+  to {
+    letter-spacing: 1px;
+    opacity: 1;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   #homeH1 h1 {
     font-size: 70px;
   }
 }
+
 @media only screen and (max-width: 375px) {
   #homeH1 h1 {
     font-size: 50px;
@@ -257,11 +304,12 @@ body {
     background-attachment: scroll;
   }
 }
-svg{
+
+svg {
   width: 50px;
   height: 50px;
   margin: 10px;
-  display:inline-block;
+  display: inline-block;
 }
 
 #notfound {
@@ -275,8 +323,8 @@ svg{
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .notfound {
@@ -298,9 +346,9 @@ svg{
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50% , -50%);
-      -ms-transform: translate(-50% , -50%);
-          transform: translate(-50% , -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 224px;
   font-weight: 900;
   margin-top: 0px;
@@ -348,13 +396,13 @@ svg{
 }
 
 @media only screen and (max-width: 767px) {
-    .notfound .notfound-404 h2 {
-        font-size: 24px;
-    }
+  .notfound .notfound-404 h2 {
+    font-size: 24px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
   .notfound .notfound-404 h1 {
-      font-size: 182px;
+    font-size: 182px;
   }
 }
