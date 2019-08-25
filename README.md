@@ -1,5 +1,6 @@
 # Veracious - Adderall
-HaXplore Hackathon Project
+*HaXplore Hackathon Project*
+
 ![Screenshot (155)](https://user-images.githubusercontent.com/26346816/63646310-14a08d00-c72e-11e9-9d8b-24f7f6dc37db.png)
 ### The Problem
 
