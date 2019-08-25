@@ -19,3 +19,11 @@ We provide a Decentralized platform for those who wish to relinquish the true fa
 - We encrypt the document using the receiver's public key and then send the cipher object to the receipient by any means of communication.
 - The end user is able to decrypt the corrseponding document using his private key and no one in the middle can decrypt the document.
 - The website is hosted using the following two options - one is decentralized approach using ipfs the website is completely decentralized and the second way by being deployed using amazon web services using  s3 bucket.
+
+### The Challenges We Faced
+Storing all of the hashes of files stored on ipfs into our smart contract in order to get the feed for the users where they can see all the content that is uploaded by other users. 
+
+Setting up the IPFS http-client and integrating the web3js library with the metamask.  
+
+### Future Perspectives
+Secure sharing of files between one to many persons.
