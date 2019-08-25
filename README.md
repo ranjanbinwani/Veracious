@@ -53,7 +53,7 @@ struct Multihash {
 2. [Niraj Shubham](https://github.com/nirajx1d)
 3. [Ranjan Binwani](https://github.com/ranjanbinwani)
 
-![Screenshot (156)](https://user-images.githubusercontent.com/26346816/63646316-22561280-c72e-11e9-9d4c-7e6215333eff.png)
+![Screenshot (160)](https://user-images.githubusercontent.com/26346816/63647172-d6f63100-c73a-11e9-913a-07fdfc140080.png)
 
 ![Screenshot (158)](https://user-images.githubusercontent.com/26346816/63646322-313cc500-c72e-11e9-9c0b-afb3d8ad406c.png)
 
