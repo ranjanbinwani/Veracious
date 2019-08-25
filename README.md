@@ -26,4 +26,5 @@ Storing all of the hashes of files stored on ipfs into our smart contract in ord
 Setting up the IPFS http-client and integrating the web3js library with the metamask.  
 
 ### Future Perspectives
-Secure sharing of files between one to many persons.
+- Secure sharing of files between one to many persons.
+- To give users the functionality to share documents for a short period of time(self destructing link).
