@@ -1,6 +1,6 @@
 # Veracious - Adderall
 HaXplore Hackathon Project
-
+![Screenshot (155)](https://user-images.githubusercontent.com/26346816/63646310-14a08d00-c72e-11e9-9d8b-24f7f6dc37db.png)
 ### The Problem
 
 Currently journalists belonging to different media houses have to find and write about content approved by the media houses, which are often manipulated and controlled by those in high power. These passionate journalists when try to reveal the truth behind scam, spying or corruption which is affecting the masses, are suppressed and have to face harsh consequences by a person in high post or having high power. Even if they try to publish evidences through various centralized sources are tracked down and punished. The truth never sees the light.
@@ -51,3 +51,9 @@ struct Multihash {
 1. [Ayush Gupta](https://github.com/AK-007)
 2. [Niraj Shubham](https://github.com/nirajx1d)
 3. [Ranjan Binwani](https://github.com/ranjanbinwani)
+
+![Screenshot (156)](https://user-images.githubusercontent.com/26346816/63646316-22561280-c72e-11e9-9d4c-7e6215333eff.png)
+
+![Screenshot (158)](https://user-images.githubusercontent.com/26346816/63646322-313cc500-c72e-11e9-9c0b-afb3d8ad406c.png)
+
+![Screenshot (159)](https://user-images.githubusercontent.com/26346816/63646375-46662380-c72f-11e9-9232-fc5de015aa30.png)
