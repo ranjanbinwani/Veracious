@@ -9,7 +9,7 @@ body {
   margin: 0;
 }
 
-.pub {
+.pub, .get-file, .send-file, .get-public-address {
   border-radius: 50%;
   margin-bottom: 5px;
   cursor: pointer;
@@ -50,7 +50,7 @@ body {
   align-items: center;
 }
 
-.upload {
+.upload, .upload2 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,22 +209,32 @@ body {
   padding: 10px;
 }
 
+#myInput{
+  border: none;
+  border-radius: 50px;
+}
+
 .home,
-.upload {
+.upload,
+.upload2 {
   height: 100%;
   color: white;
   box-shadow: 0 0 15px grey;
   margin-bottom: 0;
-  background-image: url("./../back-home.jpg");
+  background-image: url("./../back-home.jpeg");
   box-shadow: inset 0 0 0 2000px rgba(0, 56, 139, 0.3);
 }
 
+.upload2{
+  height: auto;
+  padding-top: 70px;
+}
 .feeds {
-  background-image: url("./../feed.jpg");
+  background-image: url("./../feed.jpeg");
 }
 
-.upload {
-  background-image: url("https://res.cloudinary.com/crakerss/image/upload/c_scale,q_auto:good,w_1440/v1502969988/CDF.jpg");
+.upload, .upload2 {
+  background-image: url("./../CDF.jpg");
 }
 
 #homeH1 {
@@ -439,9 +449,20 @@ svg {
 
 .tooltip {
   position: relative !important;
-  
   opacity: 1 !important;
-  text-align: center;
+  align-items: center;
   color: #000;
   padding: 20px;
+}
+
+.tooltip button{
+  padding: 10px;
+  font-size: 15px;
+  margin:0 auto;
+  display:block;
+  border: none;
+  border-radius: 50px;
+  background-color: black;
+  color: rgb(190, 140, 140);
+  font-family: 'Fira Sans', sans-serif;
 }
