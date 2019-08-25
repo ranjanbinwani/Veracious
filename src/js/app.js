@@ -1,3 +1,5 @@
+var EthCrypto = require('eth-crypto');
+
 var ipfs = window.IpfsHttpClient({
   host: "ipfs.infura.io",
   port: "5001",
@@ -253,4 +255,80 @@ $(document).ready(function () {
         });
     });
   });
+
+  $(".send-file").click(function () {
+    $(this).removeClass("clicked");
+    setTimeout(function () {
+      $(".send-file").addClass("clicked");
+    }, 10);
+    $(".send-file").hide();
+    $("#loading").show();
+    ipfs.add(buffer, (err, result) => {
+      if (err) {
+        console.log("Error is " + err);
+        return;
+      }
+      ipfsHash = result[0].hash; // base58 encoded multihash
+      ipfsHash = ipfsHash.toString();
+
+      $(".pub").show();
+      $("#loading").hide();
+      $(".rt").show();
+      $("#fileN").html("");
+      var message = `https://ipfs.io/ipfs/${ipfsHash}`;
+      // var senderSecretKey = $('#my-private-key').val(),
+      var receiverPublicKey = $('#receiver-public-key').val();
+      // if(receiverPublicKey[0]=='0' && receiverPublicKey[1]=='x') {
+      //   receiverPublicKey = receiverPublicKey.substring(2, receiverPublicKey.length);
+      // }
+      // console.log(senderSecretKey);
+      // console.log(receiverPublicKey);
+      EthCrypto.encryptWithPublicKey(
+        receiverPublicKey, // publicKey
+        message // message
+      ).then((encrypted) => {
+        console.log(encrypted);
+        $('.encrypted-text .text').val(JSON.stringify(encrypted));
+
+      }).catch((err) => {
+        console.log(error);
+      });
+
+    });
+  });
+
+  $(".get-file").click(function () {
+
+    var encrypted = $('#encrypted-text').val();
+       var priv = $('#your-private-key').val();
+      EthCrypto.decryptWithPrivateKey(
+        priv, // privateKey
+        JSON.parse(encrypted)
+      ).then((message) => {
+        console.log(message);
+        $('.decrypted-links .links').append(`<a href="${message}" target="__blank">${message}</a><br>`);
+      }).catch((err) => {
+        console.log(err);
+      });
+    
+  });
+
+
+$('.get-public-address').click(function () {
+  console.log('get-public-address');
+  var priv = $('.key').val();
+  const message = 'foo';
+  const messageHash = EthCrypto.hash.keccak256(message);
+  const signature = EthCrypto.sign(
+    priv, // privateKey
+    messageHash // hash of message
+  );
+  // console.log(signature);
+  const signer = EthCrypto.recoverPublicKey(
+    signature, // signature
+    EthCrypto.hash.keccak256('foo') // message hash
+  );
+  console.log(signer);
+  $('.publicKey').append(`<div style="max-width: 100%; overflow-x: scroll;">${signer}</div>`);
+});
 });
