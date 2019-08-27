@@ -172,7 +172,7 @@ $(document).ready(function () {
                 var multihash = _hashFunction + _size + _digest;
                 multihash = new Uint8Array(multihash.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
                 var _ipfsHash = to_b58(multihash, MAP);
-                $('.list-group').prepend(`<div id="tiles"><a href="https://ipfs.io/ipfs/${_ipfsHash}" target="_blank">${_name}</a></div>`);
+                $('.list-group').prepend(`<div id="tiles"><a href="https://ipfs.infura.io/ipfs/${_ipfsHash}" target="_blank">${_name}</a></div>`);
                 $('.list-group a').miniPreview({
                   prefetch: 'none'
                 });
@@ -225,7 +225,7 @@ $(document).ready(function () {
       fileName = $('#name').val();
       ipfsHash = result[0].hash; // base58 encoded multihash
       ipfsHash = ipfsHash.toString();
-      $(".ipfsLink").html(`Your IPFS Link : https://ipfs.io/ipfs/${ipfsHash}`);
+      $(".ipfsLink").html(`Your IPFS Link : https://ipfs.infura.io/ipfs/${ipfsHash}`);
       var decoded = toHexString(from_b58(ipfsHash, MAP)).toUpperCase();
       var digest = `0x${decoded.slice(4)}`;
       var hashFunction = parseInt(decoded[0] + decoded[1]);
@@ -236,7 +236,7 @@ $(document).ready(function () {
           from: account
         })
         .then(() => {
-          $('.list-group').prepend(`<div id="tiles"><a href="https://ipfs.io/ipfs/${ipfsHash}" target="_blank">${fileName}</a></div>`);
+          $('.list-group').prepend(`<div id="tiles"><a href="https://ipfs.infura.io/ipfs/${ipfsHash}" target="_blank">${fileName}</a></div>`);
           $('.list-group a').miniPreview({
             prefetch: 'none'
           });
@@ -275,14 +275,8 @@ $(document).ready(function () {
       $("#loading").hide();
       $(".rt").show();
       $("#fileN").html("");
-      var message = `https://ipfs.io/ipfs/${ipfsHash}`;
-      // var senderSecretKey = $('#my-private-key').val(),
+      var message = `https://ipfs.infura.io/ipfs/${ipfsHash}`;
       var receiverPublicKey = $('#receiver-public-key').val();
-      // if(receiverPublicKey[0]=='0' && receiverPublicKey[1]=='x') {
-      //   receiverPublicKey = receiverPublicKey.substring(2, receiverPublicKey.length);
-      // }
-      // console.log(senderSecretKey);
-      // console.log(receiverPublicKey);
       EthCrypto.encryptWithPublicKey(
         receiverPublicKey, // publicKey
         message // message
@@ -323,7 +317,6 @@ $('.get-public-address').click(function () {
     priv, // privateKey
     messageHash // hash of message
   );
-  // console.log(signature);
   const signer = EthCrypto.recoverPublicKey(
     signature, // signature
     EthCrypto.hash.keccak256('foo') // message hash
